@@ -1,26 +1,38 @@
 import Carousel from 'react-bootstrap/Carousel';
-import FetchingData from './FetchingData';
 import { useSelector } from 'react-redux';
 
-
+const backdrop_base_url = 'https://image.tmdb.org/t/p/w500'
 
 const MovieCarousel = () => {
 
   const movies = useSelector((state)=> state.allMovies.movies.results)
   console.log(movies);
+  if (!Array.isArray(movies)) {
+    return <div>Loading...</div>;
+  }
 
-  const RenderList = movies.map((movie)=>{
-    const { id, title, vote_average } = movie;
-    return (
-      <div>
-        <h1>{id}</h1>
-        <h1>{title}</h1>
-        <h1>{vote_average}</h1>
-      </div>
+  return (
+    <Carousel>
+      {movies.map((movie)=>{
+        const { id, title, overview, backdrop_path } = movie;
+        const backdrop_url = backdrop_base_url + backdrop_path
+        return (
+          <Carousel.Item key={id}>
+          <img
+            className="d-block w-100"
+            src = {backdrop_url}
+            alt={`Movie ${id}`}
+          />
+          <Carousel.Caption>
+            <h3>{title}</h3>
+            <p>{overview}</p>
+          </Carousel.Caption>
+      </Carousel.Item>
+        )})}
+    </Carousel>
     )
-  })
-  return <RenderList/>
-}
+  }
+
 
 export default MovieCarousel;
 
