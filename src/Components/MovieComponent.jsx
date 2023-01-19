@@ -1,6 +1,6 @@
 import React from "react";
 
-const movieComponent = () => {
+const MovieComponent = () => {
     return (
         <div>
             <h1>Movie Component</h1>
@@ -9,4 +9,4 @@ const movieComponent = () => {
     )
 }
 
-export default movieComponent;
+export default MovieComponent;

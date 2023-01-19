@@ -11,6 +11,6 @@ export const setMovies = (movies)=>{
 export const selectedMovie = (movie)=>{
     return {
         type: ActionTypes.SELECTED_MOVIE,
-        payload: product
+        payload: movie,
     }
 }
