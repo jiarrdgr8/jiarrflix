@@ -5,13 +5,14 @@ import MovieDetails from './Components/MovieDetails';
 import MovieCarousel from './Components/MovieCarousel.jsx';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Routes } from 'react-router-dom'
+import { Container } from 'react-bootstrap';
 
 function App() {
   return (
-    <>
-      <div className='container text-center'>
+    <Container bg="transparent">
+      <div className='container text-center --bs-body-bg' >
         <Router>
-          <NavBar />
+          <NavBar/>
           <FetchingData />
           <Routes>
             <Route path='/' element={<MovieCarousel />} />
@@ -21,8 +22,9 @@ function App() {
           {/* <MovieListing /> */}
         </Router>
       </div>
-    </>
+    </Container>
   );
+
 }
 
 export default App;

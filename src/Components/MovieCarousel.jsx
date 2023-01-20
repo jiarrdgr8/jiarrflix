@@ -2,7 +2,6 @@ import Carousel from 'react-bootstrap/Carousel';
 import { useSelector } from 'react-redux';
 
 const backdrop_base_url = 'https://image.tmdb.org/t/p/w500'
-
 const MovieCarousel = () => {
 
   const movies = useSelector((state)=> state.allMovies.movies.results)
@@ -12,7 +11,7 @@ const MovieCarousel = () => {
   }
 
   return (
-    <Carousel>
+    <Carousel variant="dark" className='container text-center col-sm-12'>
       {movies.map((movie)=>{
         const { id, title, overview, backdrop_path } = movie;
         const backdrop_url = backdrop_base_url + backdrop_path
